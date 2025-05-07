@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jade-shooter
+  annotations:
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: 'true'
+    external-dns.alpha.kubernetes.io/hostname: spacegame-vjank.k8sdevaccessito.uk
+    external-dns.alpha.kubernetes.io/target: 85c94b21-3aef-4524-9e29-a9795a0b4be5.cfargotunnel.com
+
+spec:
+  rules:
+  - host: spacegame-vjank.k8sdevaccessito.uk
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: jade-shooter-service
+            port:
+              number: 8080
+  tls:
+  - hosts:
+    - spacegame-vjank.k8sdevaccessito.uk
