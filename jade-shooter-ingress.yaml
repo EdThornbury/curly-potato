@@ -4,12 +4,12 @@ metadata:
   name: jade-shooter
   annotations:
     external-dns.alpha.kubernetes.io/cloudflare-proxied: 'true'
-    external-dns.alpha.kubernetes.io/hostname: reallybad-spacegame-vjank.k8sdevaccessito.uk
+    external-dns.alpha.kubernetes.io/hostname: horsemess-spacegame-vjank.k8sdevaccessito.uk
     external-dns.alpha.kubernetes.io/target: 85c94b21-3aef-4524-9e29-a9795a0b4be5.cfargotunnel.com
 
 spec:
   rules:
-  - host: reallybad-spacegame-vjank.k8sdevaccessito.uk
+  - host: horsemess-spacegame-vjank.k8sdevaccessito.uk
     http:
       paths:
       - pathType: Prefix
@@ -21,4 +21,4 @@ spec:
               number: 8080
   tls:
   - hosts:
-    - reallybad-spacegame-vjank.k8sdevaccessito.uk
+    - horsemess-spacegame-vjank.k8sdevaccessito.uk
