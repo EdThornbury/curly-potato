@@ -1,24 +1,20 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
 metadata:
-  name: jade-shooter
+  name: traefik-spacegame
+  namespace: default
   annotations:
-    external-dns.alpha.kubernetes.io/cloudflare-proxied: 'true'
-    external-dns.alpha.kubernetes.io/hostname: horsemess-spacegame-vjank.k8sdevaccessito.uk
-    external-dns.alpha.kubernetes.io/target: 85c94b21-3aef-4524-9e29-a9795a0b4be5.cfargotunnel.com
-
+    external-dns.alpha.kubernetes.io/target: 929e4236-c41f-4452-adfd-423956b70235.cfargotunnel.com
+    kubernetes.io/ingress.class: traefik
 spec:
-  rules:
-  - host: horsemess-spacegame-vjank.k8sdevaccessito.uk
-    http:
-      paths:
-      - pathType: Prefix
-        path: /
-        backend:
-          service:
-            name: jade-shooter-service
-            port:
-              number: 8080
-  tls:
-  - hosts:
-    - horsemess-spacegame-vjank.k8sdevaccessito.uk
+  entryPoints:
+    - websecure
+  routes:
+    - kind:  Rule
+      match: Host(`traefik3-space.k8sdevaccessito.uk`)
+      services:
+      - kind: Service
+        name: space-game-service
+        namespace: default
+        port: 80
+        passHostHeader: false
