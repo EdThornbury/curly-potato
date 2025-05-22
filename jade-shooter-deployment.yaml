@@ -1,29 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: space-game
-  labels:
-    app: space-game
+  name: jade-shooter
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: space-game
+      app: jade-shooter
   template:
     metadata:
       labels:
-        app: space-game
+        app: jade-shooter
     spec:
       containers:
-      - name: space-game
-        image: ghcr.io/dave-access/space-game:latest
-        ports:
-        - containerPort: 80
+      - name: jade-shooter0
+        image: jwsy/jade-shooter:v1.1
         resources:
           limits:
-            cpu: "0.5"
-            memory: "256Mi"
-          requests:
-            cpu: "0.2"
             memory: "128Mi"
-
+            cpu: "200m"
+        ports:
+        - containerPort: 80
