@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: space-game-service
+  name: jade-shooter-service
 spec:
   selector:
-    app: space-game
+    app: jade-shooter
   ports:
-  - port: 80
+  - port: 8080
     targetPort: 80
